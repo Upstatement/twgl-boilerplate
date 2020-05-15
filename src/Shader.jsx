@@ -5,7 +5,6 @@ import Desktop from "../assets/images/desktop.png";
 
 export class Shader extends Component {
   render({ name, playing }) {
-    console.log(Desktop);
     let time = new Date().toLocaleTimeString();
     const frag = require(`./shaders/${name}/shader.frag`);
     const vert = require(`./shaders/${name}/shader.vert`);
