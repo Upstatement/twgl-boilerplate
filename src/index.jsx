@@ -1,15 +1,15 @@
-import { Shader } from './Shader.jsx';
-import { ShaderCursor } from './ShaderCursor.jsx';
-import { FlimshawHeader } from './FlimshawHeader.jsx';
-import { h, render } from 'preact';
+import { Shader } from "./Shader.jsx";
+import { ShaderCursor } from "./ShaderCursor.jsx";
+import { FlimshawHeader } from "./FlimshawHeader.jsx";
+import { h, render } from "preact";
 
-require('../css/main.scss');
+require("../css/main.scss");
 
 const shaders = [
-	`mit1`,
-	`mit2`,
-	`mit3`,
-	// `vimtastic`,
+  `mit2`,
+  `mit3`,
+  `mit1`,
+  // `vimtastic`,
   // `brots`,
   // `theyre-here`,
   // `lifestyle`,
@@ -21,12 +21,13 @@ const shaders = [
   // `gooey-colors`,
 ];
 
-const ShaderDivs = shaders.map( (s,i) => {
-  return <Shader name={s} id={`shader_${i}`} />
+const ShaderDivs = shaders.map((s, i) => {
+  return <Shader name={s} id={`shader_${i}`} />;
 });
 
-render((
+render(
   <div id={`app`}>
     <ShaderCursor shaderDivs={ShaderDivs} />
-  </div>
-), document.body);
+  </div>,
+  document.body
+);
