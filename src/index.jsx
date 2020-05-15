@@ -6,16 +6,19 @@ import { h, render } from 'preact';
 require('../css/main.scss');
 
 const shaders = [
-	`vimtastic`,
-  //`brots`,
-  //`theyre-here`,
-  //`lifestyle`,
-  //`autumnal`,
-  //`pyorpull-ran`,
-  //`tropicalia`,
-  //`perlin-cloudfield`,
-  //`stripey`,
-  //`gooey-colors`,
+	`mit1`,
+	`mit2`,
+	`mit3`,
+	// `vimtastic`,
+  // `brots`,
+  // `theyre-here`,
+  // `lifestyle`,
+  // `autumnal`,
+  // `pyorpull-ran`,
+  // `tropicalia`,
+  // `perlin-cloudfield`,
+  // `stripey`,
+  // `gooey-colors`,
 ];
 
 const ShaderDivs = shaders.map( (s,i) => {
@@ -24,7 +27,6 @@ const ShaderDivs = shaders.map( (s,i) => {
 
 render((
   <div id={`app`}>
-    <FlimshawHeader />
     <ShaderCursor shaderDivs={ShaderDivs} />
   </div>
 ), document.body);

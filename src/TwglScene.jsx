@@ -26,6 +26,8 @@ export class TwglScene extends Component {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
+    const WHITE_NOISE_SIZE = Math.pow(128,2)
+
     const boxSize = 1.;
 
     const arrays = {
@@ -43,7 +45,23 @@ export class TwglScene extends Component {
         src: 'assets/textures/noise256.png',
         mag: this.gl.LINEAR,
         min: this.gl.LINEAR,
-      }
+      },
+      gradient: {
+        src: 'assets/textures/mit-grad.png',
+        mag: this.gl.LINEAR,
+        min: this.gl.LINEAR,
+      },
+      whitenoise: {
+        mag: this.gl.NEAREST,
+        min: this.gl.LINEAR,
+        src: (() => {
+          let a = [];
+          for(let i = 0; i < WHITE_NOISE_SIZE; i++) {
+            a.push(Math.floor(Math.random()*256));
+          }
+          return a
+        })()
+      },
     }, () => this.glRender(1.));
 
 		this.mousePos = [0,0];
@@ -54,7 +72,7 @@ export class TwglScene extends Component {
 		const newPos = [ e.clientX / window.innerWidth, 1 - e.clientY / window.innerHeight];
 		[0,1].map( i => {
 			this.mouseVel[i] = (newPos[i] - this.mousePos[i]) * -1;
-			this.mousePos[i] = newPos[i]; 
+			this.mousePos[i] = newPos[i];
 		});
 	}
   handleMouseOver() {
@@ -79,6 +97,8 @@ export class TwglScene extends Component {
       time: time,
       resolution: [width, height],
       noise: this.textures.noise,
+      whitenoise: this.textures.whitenoise,
+      gradient: this.textures.gradient,
 			mousePos: this.mousePos,
 			mouseVel: this.mouseVel,
     };
