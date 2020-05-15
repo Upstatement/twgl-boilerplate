@@ -1,9 +1,9 @@
-var webpack = require('webpack');
-var ClosureCompilerPlugin = require('google-closure-compiler-js').webpack;
+var webpack = require("webpack");
+var ClosureCompilerPlugin = require("google-closure-compiler-js").webpack;
 
 var PLUGINS = [];
 
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === "production") {
   // PLUGINS.push(    new ClosureCompilerPlugin({
   //       compiler: {
   //         language_in: 'ECMASCRIPT6',
@@ -20,25 +20,47 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 module.exports = {
-  entry: ['whatwg-fetch','./src/index.jsx'],
+  entry: ["whatwg-fetch", "./src/index.jsx"],
   output: {
     path: __dirname,
-    filename: 'build.js'
+    filename: "build.js",
   },
   plugins: PLUGINS,
   module: {
-      rules: [{
-          test: /\.scss$/,
-          use: [{
-              loader: "style-loader" // creates style nodes from JS strings
-          }, {
-              loader: "css-loader" // translates CSS into CommonJS
-          }, {
-              loader: "sass-loader" // compiles Sass to CSS
-          }]
+    rules: [
+      {
+        test: /\.scss$/,
+        use: [
+          {
+            loader: "style-loader", // creates style nodes from JS strings
+          },
+          {
+            loader: "css-loader", // translates CSS into CommonJS
+          },
+          {
+            loader: "sass-loader", // compiles Sass to CSS
+          },
+        ],
       },
-      { test: /\.(glsl|frag|vert)$/, loader: 'raw-loader', exclude: /node_modules/ },
-      { test: /\.(glsl|frag|vert)$/, loader: 'glslify-loader', exclude: /node_modules/ },
-      { test: /\.jsx?$/, loader: 'babel-loader' }
-    ]}
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: "file-loader",
+          },
+        ],
+      },
+      {
+        test: /\.(glsl|frag|vert)$/,
+        loader: "raw-loader",
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.(glsl|frag|vert)$/,
+        loader: "glslify-loader",
+        exclude: /node_modules/,
+      },
+      { test: /\.jsx?$/, loader: "babel-loader" },
+    ],
+  },
 };

@@ -27,6 +27,7 @@
     "babel-preset-react": "^6.24.1",
     "cross-env": "^4.0.0",
     "css-loader": "^0.28.0",
+    "file-loader": "^6.0.0",
     "glsl-hsl2rgb": "^1.1.0",
     "glsl-noise": "0.0.0",
     "glsl-random": "0.0.5",
