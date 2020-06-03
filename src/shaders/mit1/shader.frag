@@ -8,6 +8,7 @@ uniform vec2 mouseVel;
 uniform sampler2D noise;
 uniform sampler2D gradient;
 uniform sampler2D fbo;
+uniform float u1;
 
 const float sceneScale = 1.;
 
@@ -17,7 +18,7 @@ void main() {
   vec2 vUv = (uv * 2.) - 1.;
   vec2 vMp = (mousePos * 2.) - 1.;
 
-  vec4 n1 = texture2D(noise, uv + vec2(time*.00001, 0.));
+  vec4 n1 = texture2D(noise, uv * u1 + vec2(time*.00001, u1));
   vec4 n2 = texture2D(noise, n1.rg + vec2(-time*.00004, 0.0));
 
   vec4 gc = texture2D(gradient, uv.yx+n2.rg);

@@ -10,6 +10,7 @@ export class TwglScene extends Component {
       time: Date.now(),
       playing: false,
     };
+    this.uniforms = props.uniforms;
 		this.count = 0;
     this.glRender = this.glRender.bind(this);
   }
@@ -101,6 +102,9 @@ export class TwglScene extends Component {
       gradient: this.textures.gradient,
 			mousePos: this.mousePos,
 			mouseVel: this.mouseVel,
+      u1: this.uniforms.u1,
+      u2: this.uniforms.u2,
+      u3: this.uniforms.u3,
     };
 		//console.log(this.mousePos);
 		// determine if this is an odd or even frame and arrange
@@ -133,9 +137,10 @@ export class TwglScene extends Component {
     }
   }
 
-	render({ frag, vert, playing }) {
+	render({ frag, vert, playing, uniforms }) {
     if(this.state.playing !== playing) {
       this.state.playing = playing;
+      this.uniforms = uniforms;
       requestAnimationFrame(this.glRender);
     }
 

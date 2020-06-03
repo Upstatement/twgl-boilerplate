@@ -1,13 +1,13 @@
 import { Shader } from './Shader.jsx';
 import { ShaderCursor } from './ShaderCursor.jsx';
-import { FlimshawHeader } from './FlimshawHeader.jsx';
 import { h, render } from 'preact';
 
 require('../css/main.scss');
 
 const shaders = [
-		`mit2a`,
-			`mit2b`,
+	`mit4`,
+	`mit2a`,
+	`mit2b`,
 	`mit1`,
 	`mit2`,
 	`mit3`,
