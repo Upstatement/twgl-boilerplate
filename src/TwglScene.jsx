@@ -67,14 +67,11 @@ export class TwglScene extends Component {
 
 		this.mousePos = [0,0];
 		this.mouseVel = [0,0];
+    this.newPos = [0,0];
 		window.addEventListener('mousemove', this.handleMouseMove.bind(this));
 	}
 	handleMouseMove(e) {
-		const newPos = [ e.clientX / window.innerWidth, 1 - e.clientY / window.innerHeight];
-		[0,1].map( i => {
-			this.mouseVel[i] = (newPos[i] - this.mousePos[i]) * -1;
-			this.mousePos[i] = newPos[i];
-		});
+		this.newPos = [ e.clientX / window.innerWidth, 1 - e.clientY / window.innerHeight];
 	}
   handleMouseOver() {
     this.setState({ playing: true });
@@ -90,6 +87,10 @@ export class TwglScene extends Component {
 			requestAnimationFrame(this.glRender);
 			return;
 		}
+    [0,1].map( i => {
+      this.mouseVel[i] = (this.newPos[i] - this.mousePos[i]) * -1;
+      this.mousePos[i] += (this.newPos[i] - this.mousePos[i]) * .005;
+    });
     let width = this.el.width;
     let height = this.el.height;
     this.gl.viewport(0, 0, width, height);

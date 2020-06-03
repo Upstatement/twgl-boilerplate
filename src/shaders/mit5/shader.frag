@@ -12,6 +12,9 @@ uniform float u1;
 uniform float u2;
 uniform float u3;
 
+float rand(vec2 co){
+    return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
+}
 
 const float sceneScale = 1.;
 const vec3 bg = vec3(1.);
@@ -23,13 +26,14 @@ void main() {
   vec2 vMp = (mousePos * 2.) - 1.;
 
   vec4 n1 = texture2D(noise, uv + vec2(tt*.0001, tt*.000027));
-  vec4 n2 = texture2D(noise, .25 * n1.rg + vec2(-tt*.0004, 0.0));
+  vec4 n2 = texture2D(noise, vec2(.5, u2*10.) * n1.rg + vec2(-tt*.0004, 0.0));
 
   vec4 gc = texture2D(gradient, uv.yx+n2.rg);
   // vec4 fb = texture2D(fbo, uv + vMp.x);
-  float d = distance(vec2(0.), vUv);
+  float d = distance(vUv, vMp);
+  float wn = (rand(vUv+fract(time))-.5)*.07;
   // d *= n2.r;
 
   vec3 c = mix(gc.rgb, bg, pow(d*u3*2., 2.));
-  gl_FragColor = vec4(c, 1.);
+  gl_FragColor = vec4(c + wn, 1.);
 }
