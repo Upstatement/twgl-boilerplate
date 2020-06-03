@@ -5,6 +5,7 @@ import { h, render } from 'preact';
 require('../css/main.scss');
 
 const shaders = [
+	`mit5`,
 	`mit4`,
 	`mit2a`,
 	`mit2b`,
