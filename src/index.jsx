@@ -5,13 +5,8 @@ import { h, render } from 'preact';
 require('../css/main.scss');
 
 const shaders = [
+	`mentor-demo1`,
 	`mit5`,
-	`mit4`,
-	`mit2a`,
-	`mit2b`,
-	`mit1`,
-	`mit2`,
-	`mit3`,
 	// `vimtastic`,
   // `brots`,
   // `theyre-here`,

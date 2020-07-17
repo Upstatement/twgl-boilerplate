@@ -47,6 +47,11 @@ export class TwglScene extends Component {
         mag: this.gl.LINEAR,
         min: this.gl.LINEAR,
       },
+      testPattern: {
+        src: 'assets/textures/test-pattern.jpg',
+        mag: this.gl.LINEAR,
+        min: this.gl.LINEAR,
+      },
       gradient: {
         src: 'assets/textures/mit-grad.png',
         mag: this.gl.LINEAR,
@@ -101,6 +106,7 @@ export class TwglScene extends Component {
       noise: this.textures.noise,
       whitenoise: this.textures.whitenoise,
       gradient: this.textures.gradient,
+      testPattern: this.textures.testPattern,
 			mousePos: this.mousePos,
 			mouseVel: this.mouseVel,
       u1: this.uniforms.u1,
